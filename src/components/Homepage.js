@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -23,10 +23,11 @@ const Homepage = () => {
   const [loading, setLoading] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
   const [sortQuery, setSortQuery] = useState("");
+  const [cityNotFound, setCityNotFound] = useState("");
 
   const classes = useStyles();
 
-  const fetchCities = () => {
+  const fetchCities = useCallback(() => {
     setLoading(true);
     axios
       .get(
@@ -39,13 +40,19 @@ const Homepage = () => {
           setLoading(false);
           setFetchData(false);
         }
+        if (response.data.data.length === 0) {
+          setResult(response.data.data);
+          setLoading(false);
+          setFetchData(false);
+          setCityNotFound("City not found.");
+        }
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
         setFetchData(false);
       });
-  };
+  }, [sortQuery, pagination, searchTerm]);
 
   const filterHandleChange = (e) => {
     setCurrentFilter(e.target.value);
@@ -60,7 +67,7 @@ const Homepage = () => {
     if (fetchData) {
       fetchCities();
     }
-  }, [searchTerm, pagination]);
+  }, [searchTerm, pagination, fetchData, fetchCities]);
 
   let searchResult = (
     <Result
@@ -71,7 +78,7 @@ const Homepage = () => {
     />
   );
 
-  if (fetchData && loading && result && result.length > 0) {
+  if (fetchData && loading && result.length > 0) {
     searchResult = (
       <Backdrop className={classes.backdrop} open>
         <CircularProgress color='inherit' />
@@ -95,9 +102,13 @@ const Homepage = () => {
           setFetchData={setFetchData}
         />
         <div>
-          <Dropdown filterHandleChange={filterHandleChange} />
+          <Dropdown
+            filterHandleChange={filterHandleChange}
+            currentFilter={currentFilter}
+          />
         </div>
         {searchResult}
+        {cityNotFound}
       </div>
     </>
   );

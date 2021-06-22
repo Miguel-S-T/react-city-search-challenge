@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dropdown({ filterHandleChange }) {
+export default function Dropdown({ filterHandleChange, currentFilter }) {
   const classes = useStyles();
 
   const filters = ["Filter by name", "Sort by name A-Z", "Sort by name Z-A"];
@@ -32,17 +31,13 @@ export default function Dropdown({ filterHandleChange }) {
           id='demo-simple-select-outlined'
           onChange={filterHandleChange}
           label='Filter by name'
+          defaultValue={currentFilter}
         >
           {filters.map((filter, index) => (
             <MenuItem value={filter} key={index}>
               {filter}
             </MenuItem>
           ))}
-          {/* <MenuItem value='Name'>
-            <em>Name</em>
-          </MenuItem> */}
-          {/* <MenuItem value={10}>Sort by name A-Z</MenuItem>
-          <MenuItem value={20}>Sort by name Z-A</MenuItem> */}
         </Select>
       </FormControl>
     </div>

@@ -24,7 +24,7 @@ const CityDetails = (props) => {
   useEffect(() => {
     const id = props.match.params.id;
     fetchCityById(id);
-  }, []);
+  }, [props.match.params.id]);
 
   if (loading) {
     return <h2>Loading...</h2>;
