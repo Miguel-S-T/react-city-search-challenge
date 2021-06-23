@@ -1,0 +1,15 @@
+.home {
+    height: 100vh;
+    background-image: url("../assets/pexels-jesús-mirón-garcía-3043593.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    object-fit: contain;
+    filter: brightness(80%);
+}
+
+.dropdown {
+    text-align: center;
+}
+

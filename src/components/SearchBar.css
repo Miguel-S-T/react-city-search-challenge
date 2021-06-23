@@ -1,0 +1,33 @@
+#form {
+display: grid;
+place-items: center;
+text-align: center;
+padding-top: 15vh;
+}
+
+.input {
+    width: 40vw;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-radius: 50px!important;
+}
+
+.btn-search {
+    left: 16vw;
+    position: absolute;
+    width: 8vw;
+    height: 7.1vh;
+    display: flex;
+    top: -9.3vh;
+    border-radius: 50px!important;
+    background-color: #1888d5!important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: #1888d5!important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: #1888d5!important;
+}

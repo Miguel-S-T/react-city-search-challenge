@@ -4,11 +4,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import "./Dropdown.css";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 200,
+    marginTop: "-60px",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -23,10 +25,14 @@ export default function Dropdown({ filterHandleChange, currentFilter }) {
   return (
     <div>
       <FormControl variant='outlined' className={classes.formControl}>
-        <InputLabel id='demo-simple-select-outlined-label'>
+        <InputLabel
+          id='demo-simple-select-outlined-label'
+          className='input-label'
+        >
           Filter by Name
         </InputLabel>
         <Select
+          className='select-input'
           labelId='demo-simple-select-outlined-label'
           id='demo-simple-select-outlined'
           onChange={filterHandleChange}

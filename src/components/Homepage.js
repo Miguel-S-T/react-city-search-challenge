@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
+import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
+import "./Homepage.css";
 
 import SearchBar from "./SearchBar";
 import Result from "./Result";
 import Dropdown from "./Dropdown";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -85,28 +88,34 @@ const Homepage = () => {
   }
 
   // if (fetchData && result && result.length === 0 && !loading) {
-  //   searchResult = <p>City no t found.</p>;
+  //   searchResult = <p>City not found.</p>;
   // }
 
   return (
     <>
       <Header />
       <div className='home'>
-        <h1>WELCOME TO CITY SEARCH</h1>
-        <SearchBar
-          setLoading={setLoading}
-          setSearchTerm={setSearchTerm}
-          setFetchData={setFetchData}
-        />
+        <Grid container justify='center' spacing={2}>
+          <Grid item>
+            <SearchBar
+              setLoading={setLoading}
+              setSearchTerm={setSearchTerm}
+              setFetchData={setFetchData}
+            />
+            <div className='dropdown'>
+              <Dropdown
+                filterHandleChange={filterHandleChange}
+                currentFilter={currentFilter}
+              />
+            </div>
+          </Grid>
+        </Grid>
         <div>
-          <Dropdown
-            filterHandleChange={filterHandleChange}
-            currentFilter={currentFilter}
-          />
+          {searchResult}
+          {cityNotFound}
         </div>
-        {searchResult}
-        {cityNotFound}
       </div>
+      <Footer />
     </>
   );
 };

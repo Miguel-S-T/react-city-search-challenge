@@ -1,0 +1,50 @@
+#div1 {
+    position: relative;
+}
+#div1 > a {
+    cursor:pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    margin-right: 40px;
+}
+#div2 {
+    position: absolute;
+    top: 232%;
+    left: -86%;
+    display:none;
+    height: 65vh;
+    width: 238px;
+    background-color: white;
+    z-index: 20;
+    border-radius: 33px;
+    text-align: center;
+ }
+ #div1:hover #div2 {
+    display:block;
+ }
+
+ #div3 {
+    margin-top: 35px;
+    color: black;
+   
+ }
+ #div3 > h2 {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1888d5;
+ }
+ #div3 > h3 {
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: 400;
+ }
+ #div3 > img {
+    width: 170px;
+    border-radius: 10px;
+    object-fit: contain;
+    filter: brightness(80%);
+ }
+
+ 

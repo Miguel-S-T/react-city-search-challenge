@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
+import "./SearchBar.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
     },
   },
 }));
@@ -27,10 +27,12 @@ const SearchBar = ({ setSearchTerm, setFetchData }) => {
       <form
         onSubmit={(e) => onSubmitHandler(e)}
         className={classes.root}
+        id='form'
         noValidate
         autoComplete='off'
       >
         <TextField
+          className='input'
           id='outlined-basic'
           label='Search Cities'
           variant='outlined'
@@ -38,6 +40,7 @@ const SearchBar = ({ setSearchTerm, setFetchData }) => {
           onChange={(event) => setString(event.target.value)}
         />
         <Button
+          className='btn-search'
           onClick={(e) => onSubmitHandler(e)}
           variant='contained'
           color='primary'
