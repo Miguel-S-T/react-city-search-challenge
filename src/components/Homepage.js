@@ -38,7 +38,7 @@ const Homepage = () => {
         `${process.env.REACT_APP_API}/v1/geo/cities?limit=10&offset=${pagination}&namePrefix=${searchTerm}${sortQuery}`
       )
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         if (response.data.data.length > 0) {
           setResult(response.data.data);
           setLoading(false);
@@ -81,7 +81,10 @@ const Homepage = () => {
 
   if (fetchData && loading && result.length > 0) {
     searchResult = (
-      <Backdrop className={classes.backdrop} open>
+      <Backdrop
+        className={classes.backdrop}
+        open
+      >
         <CircularProgress color='inherit' />
       </Backdrop>
     );
@@ -95,13 +98,20 @@ const Homepage = () => {
     <>
       <Header />
       <div className='home'>
-        <Grid container justify='center' spacing={2}>
+        <Grid
+          container
+          justify='center'
+          spacing={2}
+        >
           <Grid item>
-            <SearchBar
-              setLoading={setLoading}
-              setSearchTerm={setSearchTerm}
-              setFetchData={setFetchData}
-            />
+            <div className='dropdown'>
+              <SearchBar
+                setLoading={setLoading}
+                setSearchTerm={setSearchTerm}
+                setFetchData={setFetchData}
+              />
+            </div>
+
             <div className='dropdown'>
               <Dropdown
                 filterHandleChange={filterHandleChange}

@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import PersonPhoto from "../assets/pexels-karolina-grabowska-5882656.jpg";
+import cityLogo from "../assets/city_logo-removebg-preview.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,10 +32,25 @@ export default function MenuAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position='fixed' className={classes.navBar}>
+      <AppBar
+        position='fixed'
+        className={classes.navBar}
+      >
         <Toolbar>
-          <Link to='/' className={classes.title}>
-            <svg
+          <Link
+            to='/'
+            className={classes.title}
+          >
+            <img
+              src={cityLogo}
+              alt='city logo'
+              style={{
+                objectFit: "contain",
+                width: "100px",
+                height: "60px",
+              }}
+            />
+            {/* <svg
               width='123px'
               height='30px'
               viewBox='0 0 123 30'
@@ -57,18 +73,18 @@ export default function MenuAppBar() {
                   fill='#FFFFFF'
                 />
               </g>{" "}
-            </svg>
+            </svg> */}
           </Link>
 
           <div id='div1'>
             <Link href='#'>My Profile </Link>
             <div id='div2'>
               <div id='div3'>
-                <img src={PersonPhoto} alt='person' />
-                <h2>Pedro Domingos</h2>
-                <h3>
-                  I'm proud to do <br /> the Eduwo Task
-                </h3>
+                <img
+                  src={PersonPhoto}
+                  alt='person'
+                />
+                <h2>I'm Miguel TM</h2>
               </div>
             </div>
           </div>

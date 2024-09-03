@@ -31,23 +31,24 @@ const SearchBar = ({ setSearchTerm, setFetchData }) => {
         noValidate
         autoComplete='off'
       >
-        <TextField
-          className='input'
-          id='outlined-basic'
-          label='Search Cities'
-          variant='outlined'
-          value={string}
-          onChange={(event) => setString(event.target.value)}
-        />
-        <Button
-          className='btn-search'
-          onClick={(e) => onSubmitHandler(e)}
-          variant='contained'
-          color='primary'
-          type='submit'
-        >
-          Search
-        </Button>
+        <div className='search-container'>
+          <TextField
+            className='search-input'
+            label='Search Cities'
+            variant='outlined'
+            value={string}
+            onChange={(event) => setString(event.target.value)}
+          />
+          <Button
+            className='btn-search'
+            onClick={(e) => onSubmitHandler(e)}
+            variant='contained'
+            color='primary'
+            type='submit'
+          >
+            Search
+          </Button>
+        </div>
       </form>
     </>
   );

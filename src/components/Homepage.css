@@ -10,6 +10,9 @@
 }
 
 .dropdown {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+    /* text-align: center; */
 }
 
