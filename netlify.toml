@@ -1,3 +1,5 @@
 [build]
   command = "npm run build"
+
+[context.production]
   node_version = "16.20.0"
